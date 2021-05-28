@@ -1,23 +1,47 @@
 #include <conio.h>
 #include <stdio.h>
+#include <iostream>
+
+void Incrementar(int *p){
+    *p=(*p)+1;
+
+}
+
 
 int main()
 {
 
-//There is a simple way in c++ to declare variables and pointers:
-
     int a=10;
-    int *p;
-    p=&a;
+    int *p=&a;
 
-    //pointer arithmetic
-    printf("Address of p is %d\n",p);
-    printf("Size of integer is %d bites\n",sizeof (int));
-    printf("Address p+1 is %d\n",p+1);
+    printf("Address of a is %d\n",p);
+//FIRST WAY
+    Incrementar(&a);
+    printf("a+1 is %d\n",a);
 
-    //Now, what if we wonder what the value at p+1 is ?? Well lets figure it out
+    /*
+     So, in this example im incrementing the velue of a by
+     passing its mamory address as an argumento to the method
+     Incrementar which means I'm calling the method by reference
 
-    printf("Value at address p+1 is %d\n",*(p+1));//We get a unknown value
-    //this happens because we really don't have any value alocated at address (p+1), this sometimes can be dangerous
-    //This is why pointers maniputation is very important in c++
+     There are two ways I can pass the address of a
+
+     The first one is the one you can see above, in this I
+     pass &a which is directly the memory address of a
+
+     The secod is by storing that memory address in a ponter variable
+     of type int, both ways will give the same result since
+     Im passing the same exact memory address
+     */
+ //SECOND WAY (Remember that p is a pointer, and it stores an address
+    //so the syntax below is completely valid and perfect)
+    Incrementar(p);
+    printf("a+1 is %d\n",*p);
+
+    //I can access the value of a by dereferencing the pointer pointing to that variable memory address
+    //Or I could just simply print a straight
+
+
+
+    //6422036
 }
