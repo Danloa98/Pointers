@@ -11,37 +11,62 @@ void Incrementar(int *p){
 int main()
 {
 
-    int a=10;
-    int *p=&a;
-
-    printf("Address of a is %d\n",p);
-//FIRST WAY
-    Incrementar(&a);
-    printf("a+1 is %d\n",a);
+    int A[]={1,8,10,3,4};//We are creating an array of 5 elements
+    /*
+     This is an array of integers, so as we already know, each one of the integers
+     will take 4 bytes of memory in tye RAM, so it means that this array A[] takes
+     20 bytes on the RAM. We can say A[] takes 20 bytes
+    */
 
     /*
-     So, in this example im incrementing the velue of a by
-     passing its mamory address as an argumento to the method
-     Incrementar which means I'm calling the method by reference
+     The way C++'s compiler works allow us to manipulate memory in an array in different ways
 
-     There are two ways I can pass the address of a
+     For instance, if we want to access the memory addess of the first elemet on the array we can do it in the next 2 ways:
 
-     The first one is the one you can see above, in this I
-     pass &a which is directly the memory address of a
-
-     The secod is by storing that memory address in a ponter variable
-     of type int, both ways will give the same result since
-     Im passing the same exact memory address
      */
- //SECOND WAY (Remember that p is a pointer, and it stores an address
-    //so the syntax below is completely valid and perfect)
-    Incrementar(p);
-    printf("a+1 is %d\n",*p);
 
-    //I can access the value of a by dereferencing the pointer pointing to that variable memory address
-    //Or I could just simply print a straight
+//1. We just use the name of the array and the output will be the memory address of the first elemento on it
+   printf("Memory address of the first element of A[] (1st option) %d\n",A);
 
 
+   //2. We do it by using pointers or a reference to the first element on the array
 
-    //6422036
+   printf("Memory address of the first element of A[] (2nd option) %d\n",&A[0]);
+
+
+   //2.1 We can also store the adress using a pointer the A[0] address
+
+   int *p=&A[0];
+   printf("Memory address of the first element of A[] (2.1nd option) %d\n",p);
+
+
+   //2.2 And as way 1 we can use the next syntax
+
+   int *p2=A;
+
+   printf("Memory address of the first element of A[] (2.2nd option) %d\n",p2);
+
+
+   //And finally we can see the value stored at that memory address by dereferencing the pointer
+
+
+   printf("Value stored at A[0] (1st option) %d\n",*A);
+    printf("Value stored at A[0] (2nd option) %d\n",A[0]);
+     printf("Value stored at A[0] (3rd option) %d\n",*p);
+      printf("Value stored at A[0] (4th option) %d\n",*p2);
+
+
+
+//We can do some tricks manipulating the memory address, for example:
+      //Using arithmetic pointers
+
+      printf("Memory address of A[1] %d\n",A+1);
+      printf("Memory address of A[1] %d\n",&A[1]);
+      printf("value stored in A[1] %d\n",*(A+1));
+      printf("value stored in A[1] %d\n",A[1]);
+
+//And by dereferencing, as we already know, we can change the value stored at that memory address, easy
+
+
+
 }
